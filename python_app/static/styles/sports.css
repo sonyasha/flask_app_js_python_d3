@@ -1,0 +1,68 @@
+#graph svg {
+    /* background: rgb(255, 255, 255); */
+    background: rgb(2, 34, 76);
+    
+}
+
+.active {
+    font-weight: bold;
+    fill: rgb(177, 177, 182);
+    transition: fill 0.3s ease-out;
+    text-anchor: middle;
+}
+  
+.inactive {
+    font-weight: lighter;
+    fill: rgb(123, 123, 128);
+    transition: fill 0.3s ease-out;
+    text-anchor: middle;
+}
+
+.inactive:hover {
+    fill: rgb(156, 156, 158);
+    font-weight: normal;
+    cursor: pointer;
+}
+
+.bars {
+    fill: rgb(255, 255, 255);
+}
+
+.bars:hover {
+    fill: rgb(204, 202, 202);
+}
+
+.resultbars {
+    fill: rgb(205, 25, 49);
+}
+
+.resultbars:hover {
+    fill: rgb(231, 77, 97);
+}
+
+.dates {
+    font: 14px times;
+    text-anchor: middle;
+}
+
+.leftAxis {
+    stroke: rgb(205, 25, 49);
+    font: 18px serif;
+}
+
+.rightAxis {
+    stroke:rgb(255, 255, 255);
+    font: 14px times;
+}
+
+.domain, line, .dates, .cleanBut {
+    stroke: rgb(177, 177, 182);
+}
+
+.resBut {
+    stroke: rgb(205, 25, 49);
+}
+
+.attBut {
+    stroke:rgb(255, 255, 255);
+}

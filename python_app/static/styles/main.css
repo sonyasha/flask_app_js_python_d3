@@ -1,0 +1,267 @@
+
+/* MAIN LAYOUT------------------------------------------------ */
+
+*{  box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+    font-family: 'Catamaran', sans-serif;
+    font-size: 15pt;
+    color: rgb(54, 53, 61);
+  }
+
+
+header {
+    grid-area: header;
+    background: url('../styles/images/header4.jpg') center no-repeat;
+    background-size: cover;
+}
+
+aside {
+    grid-area: aside;
+    background: url('../styles/images/stripes.jpg') center no-repeat;
+    background-size: cover;
+    
+}
+
+article {
+    grid-area: article;
+    padding: 40px;
+    /* background: rgb(236, 122, 198); */
+}
+
+.wrapper {
+    display: grid;
+    grid-template-columns: 0.5fr 3fr;
+    grid-template-rows: 250px auto;
+    grid-template-areas: 
+        "header header"
+        "aside article";
+}
+
+/* HEADER LAYOUT------------------------------------------------ */
+
+.empty {
+    grid-area: empty-header;
+}
+
+.weather {
+    grid-area: weather;
+}
+
+.clock {
+    grid-area: clock;
+}
+
+header {
+    display: grid;
+    grid-template-columns: 1fr 3fr 1.5fr;
+    grid-template-areas:
+        "clock empty-header weather";
+}
+
+/* MAIN ARTICLE LAYOUT------------------------------------------------ */
+
+.intro {
+    grid-area: intro;
+}
+
+.map-info {
+    grid-area: map-info;
+    align-self: flex-start;
+}
+
+.map {
+    grid-area: map;
+}
+
+.sports {
+    grid-area: sports;
+}
+
+.sports-info {
+    grid-area: sports-info;
+    align-self: flex-start;
+}
+
+.tweets {
+    grid-area: tweets;
+}
+
+.shots {
+    grid-area: shots;
+}
+
+article {
+    display: grid;
+    grid-template-columns: 1.7fr 0.5fr 1.7fr;
+    grid-gap: 15px;
+    grid-template-areas:
+    "intro intro intro"
+    "map-info map map"
+    "sports sports sports-info"
+    "tweets tweets tweets"
+    "shots shots shots";
+}
+
+/* MEDIA QUERY LAYOUT------------------------------------------------ */
+
+@media all and (max-width: 1160px) {
+    .wrapper{
+        display: grid;
+        grid-template-columns: 0.6fr 3fr;
+        grid-template-rows: 280px auto;
+        grid-template-areas: 
+            "header header"
+            "aside article";
+    }
+
+    header {
+        display: grid;
+        grid-template-columns: 1fr 3fr 1.5fr;
+        grid-template-areas:
+            "clock empty-header weather";
+    }
+}
+
+@media all and (max-width: 880px) {
+    .wrapper {
+        grid-template-columns: 1fr;
+        grid-template-rows: 280px 10vh auto;
+        grid-template-areas: 
+            "header"
+            "aside"
+            "article";
+    }
+
+    header {
+        grid-template-columns: 1fr;
+        grid-template-areas:
+        "weather"
+        "clock";
+    }
+
+    .clock {
+        display: flex;
+        justify-content: center;
+    }
+
+    aside {
+        background: url('../styles/images/stripesh.jpg') center no-repeat;
+        background-size: cover;
+    }
+
+    /* flows only within sidebar boundaries */
+    .menu {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-evenly;
+        position: sticky;
+        height: 10vh;
+        top: 0;
+    }
+
+    .menu li a {
+        /* text-align: center; */
+        align-self: center;
+    }
+
+    article {
+        grid-template-columns: 1fr;
+        grid-template-areas:
+        "intro"
+        "map-info"
+        "map"
+        "sports-info"
+        "sports"
+        "tweets"
+        "shots";
+    }
+}
+
+@media all and (max-width: 550px) {
+    .wrapper {
+        grid-template-columns: 1fr;
+        grid-template-rows: 280px auto;
+        grid-template-areas: 
+            "header"
+            "article";
+    }
+    aside {
+        display: none;
+    }
+}
+
+
+/* HEADER------------------------------------------------ */
+
+/* SIDEBAR------------------------------------------------ */
+
+.sidebar {
+    position: sticky;
+    top: 0;
+    height: 100vh;
+}
+
+.menu li {
+    display: flex;
+    justify-content: center;
+    padding: 10px 0px 10px 0px ;
+    /* margin: 0 15px; */
+    /* max-width: 320px; */
+}
+
+.menu li a, #mapsBtn, #sportsBtn, #entBtn, #liqBtn {
+    font-weight: bold;
+    font-size: 20px;
+    text-decoration: none;
+    /* text-shadow: 0.5px 1px 1px rgb(15, 4, 165); */
+    color: rgb(251, 250, 252);
+    background: rgba(18, 113, 245, 0.76);
+    border-radius: 5px;
+    padding: 0 5px;
+    margin: 0 15px;
+    text-align: center;
+    flex-grow: 1;
+
+}
+
+.menu li a:hover, #mapsBtn:hover, #sportsBtn:hover, #entBtn:hover, #liqBtn:hover {
+    background: rgba(240, 58, 58, 0.705);
+    /* cursor: pointer; */
+}
+
+/* MAIN------------------------------------------------ */
+
+#mapsBtn, #sportsBtn, #entBtn, #liqBtn {
+    margin-top: 12px;
+}
+
+.form-line {
+    margin-top: 15px;
+}
+
+.iframeContainer {
+    box-shadow: -1px 3px 6px 0px rgb(176, 196, 226), 1px -1px 3px 0px rgb(218, 234, 248), 3px 3px 6px 0px rgb(177, 175, 177), -1px -1px 3px 0px rgb(221, 221, 221);
+    border: 0.1px, solid;
+    border-radius: 7px;
+  }
+
+.mapsframe, .tweetsframe {
+    padding: 10px;
+}
+
+.buttons-under {
+    display: flex;
+    /* flex-direction: row; */
+    justify-content: space-between;
+}
+
+.iframe-parent {
+    overflow: auto!important;
+    -webkit-overflow-scrolling: touch!important;
+}
+
+.iframe-child {
+    overflow: scroll;
+    -webkit-overflow-scrolling: touch;
+}

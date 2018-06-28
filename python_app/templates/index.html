@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>DC Dashboard</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" crossorigin="anonymous">
+        <!-- <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.3.2/components/ad.min.css"> -->
+        <link href="https://fonts.googleapis.com/css?family=Catamaran:500,700" rel="stylesheet">
+        <link rel="stylesheet" type="text/css" media="screen" href="{{ url_for('static', filename='styles/main.css') }}"/>
+        <link rel="shortcut icon" href="{{ url_for('static', filename='styles/images/favicon.ico') }}">
+        
+        <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+        <!-- <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script> -->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js" integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T" crossorigin="anonymous"></script>
+        <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.3.2/components/api.min.js"></script> -->
+        
+    </head>
+
+    <body>
+        
+        <div id="wrapper" class="wrapper">
+            <header>
+                <div class="clock">
+                        <iframe src="http://free.timeanddate.com/clock/i6apoa2r/n263/fs16/fcfff/tct/pct/ftb/pl16/pt10/tt0/tw0/tm1/th1/tb4" frameborder="0" width="115" height="47" allowTransparency="true"></iframe>
+                </div>
+                <div class="empty"></div>
+                <div class="weather">
+                    <a class="weatherwidget-io" href="https://forecast7.com/en/38d91n77d04/washington/" data-label_1="DISTRICT OF COLUMBIA" data-font="Roboto" data-icons="Climacons Animated" data-days="3" data-basecolor="rgba(85, 129, 191, 0)" data-shadow="#c6c6c6" data-textcolor="#ffffff" data-highcolor="#024c06" data-lowcolor="#fefefe" data-suncolor="#ffc200" data-mooncolor="#faf325" data-cloudcolor="#0769f5" data-cloudfill="#98bcef" data-raincolor="#002cfe" data-snowcolor="#ffffff" >DISTRICT OF COLUMBIA</a>
+                    <script>
+                        !function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src='https://weatherwidget.io/js/widget.min.js';fjs.parentNode.insertBefore(js,fjs);}}(document,'script','weatherwidget-io-js');
+                    </script>
+                </div>
+            </header>
+            <aside>
+                <div class="sidebar">
+                    <ul class="menu">
+                        <li><a href="#">Home</a></li>
+                        <li><a href="#map">DC Map</a></li>
+                        <li><a href="#sport">City Teams</a></li>
+                        <li><a href="#bars">Night Bars</a></li>
+                        <li><a href="#">Something else</a></li>
+                        <li><a href="#contact_dialog" class="btn" id="contBtn" data-toggle="modal" data-target="#contact_dialog">Rate Us</a></li>
+                        <li><a href="#" class="btn" id="rateBtn">Scores</a></li>
+                        <!-- <li><button class="cont-button" data-toggle="modal" data-target="#contact_dialog">Contact Us</button></li> -->
+                    </ul>
+                </div>
+            </aside>
+            <article>
+                <div class="intro">
+                    <h1>Welcome to DC - for people, not politicians!</h1>
+                    <p>You think water moves fast? You should see ice. It moves like it has a mind. Like it knows it killed the world once and got a taste for murder. After the avalanche, it took us a week to climb out. Now, I don't know exactly when we turned on each other, but I know that seven of us survived the slide... and only five made it out. Now we took an oath, that I'm breaking now. We said we'd say it was the snow that killed the other two, but it wasn't. Nature is lethal but it doesn't hold a candle to man. </p>
+                </div>
+                <div class="map-info">
+                    <h2>To live or not live?</h2>
+                    <p>The climate of Washington, D.C. is considered humid subtropical. It has extremely cold winters but you are lucky if you see a snow with average snowfall at about 37 cm and hot, humid summers. The average January low temperature is 27.3˚F (-3˚C) while the average July high is 88˚F (31˚C).
+                            D.C. gets more rain than Seattle!</p>
+                    <p>The lysine contingency - it's intended to prevent the spread of the animals is case they ever got off the island. Dr. Wu.</p>
+                </div>
+                <div id="map" class="map mapframe">
+                    <div class="iframeContainer">
+                        <div class="embed-responsive embed-responsive-16by9 iframe-parent">
+                            <iframe class="embed-responsive-item iframe-child" src="{{ url_for('show_map') }}" allowfullscreen></iframe>
+                        </div>
+                    </div>
+                    <div>
+                        <a href="#map" class="btn" id="mapsBtn">Expand</a>
+                    </div>    
+                </div>
+                <div id="sport" class="sports">
+                    <div class="iframeContainer">
+                        <div id="parent" class="embed-responsive embed-responsive-16by9">
+                            <iframe id="sportgraph" class="embed-responsive-item" src="{{ url_for('show_sports') }}" allowfullscreen></iframe>
+                        </div>
+                    </div>
+                    <div class="buttons-under">
+                        <div>
+                            <a href="#sport" class="btn" id="sportsBtn">Expand</a>
+                        </div>
+                        <div>
+                            <a href="#ent" class="btn" id="entBtn">Map</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="sports-info">
+                    <h2>Sport Life</h2>    
+                    <p>D.C is the home of the Washington Capitals and Washington Nationals two of the most dominant teams in the world. 2018 has been a historic year for D.C has our Washington Capitals won the Stanley Cup! The Nationals look to follow in their footsteps this year as they continue their 2018 season. As you can see from the chart both teams have had many fans along with many wins throughout recent years.</p>
+                </div>
+                <div id="bars" class="tweets">
+                    <h3>D.C. residents drink more wine per capita than residents of any of the 50 states.</h3>
+                    <p>The nation’s capital is known for its highbrow social scene. Over the years, swanky social clubs such as Rock N Roll Hotel, Madhatter, and Whitlow’s have hosted luminaries ranging from Abigail Adams to Joe Biden and Paul Manafort. James and Dolly Madison are rumored to have first met while in line for the Codmother bathroom. Select from the drop-down to view the latest tweets about these storied establishments.</p>
+                    <div class="iframeContainer tweetsframe">
+                        <div class="embed-responsive embed-responsive-21by9 iframe-parent">
+                            <iframe class="embed-responsive-item iframe-child" src="{{ url_for('show_tweets') }}" allowfullscreen></iframe>
+                        </div>
+                    </div>
+                    <div>
+                        <a href="#liq" class="btn" id="liqBtn">Map</a>
+                    </div>
+                        <!-- <div>
+                            <a href="#bars" class="btn" id="barsBtn">Refresh</a>
+                        </div>     -->
+                    <div></div>    
+                    <h3>Sports life</h3>
+                    <p>poooooooooo</p>
+                </div>
+                <div id="shots" class="shots">
+                    <div class="iframeContainer">
+                        <div id="parent" class="embed-responsive embed-responsive-21by9">
+                            <iframe id="shotgraph" class="embed-responsive-item" src="{{ url_for('show_shots') }}" allowfullscreen></iframe>
+                        </div>
+                    </div>
+                    <div class="buttons-under">
+                        <!-- <div>
+                            <a href="#shots" class="btn" id="shotsBtn">Expand</a>
+                        </div> -->
+                        <!-- <div>
+                            <a href="#ent" class="btn" id="entBtn">Map</a>
+                        </div> -->
+                    </div>
+                </div>
+            </article>
+                            
+        </div>
+        <!-- MODALS-------------------------- -->
+        <div id="sports-modal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+            <div class="modal-dialog sport modal-lg modal-dialog-centered">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <span>Capitals and Nationals</span>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="embed-responsive embed-responsive-16by9">
+                        <!-- <iframe src="{{ url_for('show_sports') }}" style="zoom:1" width="760" height='400' frameborder="0"></iframe> -->
+                        <iframe src="{{ url_for('show_sports') }}" style="zoom:1" frameborder="2"></iframe>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button class="btn" data-dismiss="modal">Close</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="maps-modal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+            <div class="modal-dialog map modal-lg modal-dialog-centered">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <span>DC Map</span>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="embed-responsive embed-responsive-16by9">
+                        <!-- <iframe src="{{ url_for('show_map') }}" style="zoom:1" width="760" height='500' frameborder="0"></iframe> -->
+                        <iframe src="{{ url_for('show_map') }}" frameborder="0"></iframe>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button class="btn" data-dismiss="modal">Close</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- FORM MODAL---------------------------------- -->
+
+        <!-- <button type="button" class="btn btn-info" data-toggle="modal" data-target="#contact_dialog">Contact</button> -->
+     
+        <!-- Contact us modal -->
+        <div class="modal hide fade" id="contact_dialog" role="dialog">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                            <h4 class="modal-title">Leave your feedback</h4>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                        <!-- <h4 class="modal-title">Leave your feedback</h4> -->
+                    </div>
+                        <div class="modal-body">
+                            
+                            <form id="contact_form" action="/form" method="POST" role="form">
+                                <input type="text" class="form-control form-line" name="name" placeholder="Enter Your Name">
+                                <select class="custom-select mr-sm-2 form-line" name="rating">
+                                    <option selected>Choose Rating..</option>
+                                    <option value="1">Terrible</option>
+                                    <option value="2">So-so</option>
+                                    <option value="3">I don't know..</option>
+                                    <option value="4">Good</option>
+                                    <option value="5">Awesome</option>
+                                </select>
+                                <input type="text" class="form-control form-line" placeholder="Enter review text" name="comment">
+                            </form>
+                            
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                            <button type="button" id="submitForm" class="btn btn-default">Send</button>
+                        </div>
+                    </div>
+                </div>
+        </div>
+
+        <!-- Entertainment modal------------------------------------------ -->
+        <div id="ent-modal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+            <div class="modal-dialog ent modal-lg modal-dialog-centered">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <span>DC Entertainment</span>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="embed-responsive embed-responsive-16by9">
+                            <iframe src="{{ url_for('show_ent') }}" frameborder="0"></iframe>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button class="btn" data-dismiss="modal">Close</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Liquors modal------------------------------------------ -->
+        <div id="liq-modal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+            <div class="modal-dialog liq modal-lg modal-dialog-centered">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <span>DC Alcohol</span>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="embed-responsive embed-responsive-16by9">
+                            <iframe src="{{ url_for('show_liq') }}" frameborder="0"></iframe>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button class="btn" data-dismiss="modal">Close</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="rates-modal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                <div class="modal-dialog map modal-lg modal-dialog-centered">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <span>Rating</span>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+                            <div class="embed-responsive embed-responsive-16by9">
+                                <iframe src="{{ url_for('show_rate') }}" frameborder="0"></iframe>
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <button class="btn" data-dismiss="modal">Close</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+        <!-- MODALS -------------------------- -->
+        <script src="{{ url_for('static', filename='js/logic.js') }}"></script>
+    </body>
+</html>
