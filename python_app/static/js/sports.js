@@ -325,7 +325,7 @@ function makeResponsive() {
                     console.log(counter);
 
                     var value = d3.select(this).attr("value");
-                    if (value != chosenX) {
+                    if (value != chosenX | counter === 2) { //need to figure out why X axis is incorrect
                         chosenX = value;
 
                         (chosenX === 'capitals') ? data = responce[0]: data = responce[1];

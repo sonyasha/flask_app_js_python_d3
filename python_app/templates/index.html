@@ -22,6 +22,7 @@
     <body>
         
         <div id="wrapper" class="wrapper">
+
             <header>
                 <div class="clock">
                         <iframe src="http://free.timeanddate.com/clock/i6apoa2r/n263/fs16/fcfff/tct/pct/ftb/pl16/pt10/tt0/tw0/tm1/th1/tb4" frameborder="0" width="115" height="47" allowTransparency="true"></iframe>
@@ -34,6 +35,7 @@
                     </script>
                 </div>
             </header>
+
             <aside>
                 <div class="sidebar">
                     <ul class="menu">
@@ -41,23 +43,26 @@
                         <li><a href="#map">DC Map</a></li>
                         <li><a href="#sport">City Teams</a></li>
                         <li><a href="#bars">Night Bars</a></li>
-                        <li><a href="#">Something else</a></li>
+                        <li><a href="#shots">Crimes</a></li>
                         <li><a href="#contact_dialog" class="btn" id="contBtn" data-toggle="modal" data-target="#contact_dialog">Rate Us</a></li>
-                        <li><a href="#" class="btn" id="rateBtn">Scores</a></li>
-                        <!-- <li><button class="cont-button" data-toggle="modal" data-target="#contact_dialog">Contact Us</button></li> -->
+                        <li><a href="#rates-modal" class="btn" id="rateBtn">Scores</a></li>
                     </ul>
                 </div>
             </aside>
+
             <article>
                 <div class="intro">
                     <h1>Welcome to DC - for people, not politicians!</h1>
                     <p>You think water moves fast? You should see ice. It moves like it has a mind. Like it knows it killed the world once and got a taste for murder. After the avalanche, it took us a week to climb out. Now, I don't know exactly when we turned on each other, but I know that seven of us survived the slide... and only five made it out. Now we took an oath, that I'm breaking now. We said we'd say it was the snow that killed the other two, but it wasn't. Nature is lethal but it doesn't hold a candle to man. </p>
                 </div>
                 <div class="map-info">
-                    <h2>To live or not live?</h2>
-                    <p>The climate of Washington, D.C. is considered humid subtropical. It has extremely cold winters but you are lucky if you see a snow with average snowfall at about 37 cm and hot, humid summers. The average January low temperature is 27.3˚F (-3˚C) while the average July high is 88˚F (31˚C).
-                            D.C. gets more rain than Seattle!</p>
-                    <p>The lysine contingency - it's intended to prevent the spread of the animals is case they ever got off the island. Dr. Wu.</p>
+                    <h2>To move or not to move?</h2>
+                    <p>The climate of Washington, D.C. is considered humid subtropical.
+                        It has extremely cold winters but you are lucky if you can see a snow because usually it's just a rain.
+                        On the other hand summers are hot and nice, the only disappointing thing is a hight humidity.
+                        The average January low temperature is 27.3˚F (-3˚C) while the average July high is 88˚F (31˚C).
+                        It is surprisingly but true that D.C. gets more rain than Seattle!</p>
+                    
                 </div>
                 <div id="map" class="map mapframe">
                     <div class="iframeContainer">
@@ -80,12 +85,12 @@
                             <a href="#sport" class="btn" id="sportsBtn">Expand</a>
                         </div>
                         <div>
-                            <a href="#ent" class="btn" id="entBtn">Map</a>
+                            <a href="#sport" class="btn" id="entBtn">Map</a>
                         </div>
                     </div>
                 </div>
                 <div class="sports-info">
-                    <h2>Sport Life</h2>    
+                    <h2>Sport in the City</h2>    
                     <p>D.C is the home of the Washington Capitals and Washington Nationals two of the most dominant teams in the world. 2018 has been a historic year for D.C has our Washington Capitals won the Stanley Cup! The Nationals look to follow in their footsteps this year as they continue their 2018 season. As you can see from the chart both teams have had many fans along with many wins throughout recent years.</p>
                 </div>
                 <div id="bars" class="tweets">
@@ -97,33 +102,24 @@
                         </div>
                     </div>
                     <div>
-                        <a href="#liq" class="btn" id="liqBtn">Map</a>
-                    </div>
-                        <!-- <div>
-                            <a href="#bars" class="btn" id="barsBtn">Refresh</a>
-                        </div>     -->
-                    <div></div>    
-                    <h3>Sports life</h3>
-                    <p>poooooooooo</p>
+                        <a href="#bars" class="btn" id="liqBtn">Map</a>
+                    </div>   
                 </div>
                 <div id="shots" class="shots">
+                    <h3>Shots</h3>
+                    <p>The DC Metropolitan Police Department uses ShotSpotter to respond to instances of outdoor gunfire. ShotSpotter uses a series of audio-sensors and closed-circuit cameras to notify police of the locations of likely gunshots in real time. The data provided by ShotSpotter includes audio recordings of the sounds that are picked up, allowing officers to verify that these sounds are actual gunshots. Prior to ShotSpotter, approximately 80-90% of gunshots went undetected. Now, police are much more likely to know when a gun is fired and to be able to quickly respond to such incidents.</p>
+                    
                     <div class="iframeContainer">
                         <div id="parent" class="embed-responsive embed-responsive-21by9">
                             <iframe id="shotgraph" class="embed-responsive-item" src="{{ url_for('show_shots') }}" allowfullscreen></iframe>
                         </div>
                     </div>
-                    <div class="buttons-under">
-                        <!-- <div>
-                            <a href="#shots" class="btn" id="shotsBtn">Expand</a>
-                        </div> -->
-                        <!-- <div>
-                            <a href="#ent" class="btn" id="entBtn">Map</a>
-                        </div> -->
-                    </div>
                 </div>
             </article>
                             
         </div>
+
+        <!-- UGLY code goes here. should be turned into a modal rendering function.. one day -->
         <!-- MODALS-------------------------- -->
         <div id="sports-modal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
             <div class="modal-dialog sport modal-lg modal-dialog-centered">
@@ -146,6 +142,7 @@
                 </div>
             </div>
         </div>
+
         <div id="maps-modal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
             <div class="modal-dialog map modal-lg modal-dialog-centered">
                 <div class="modal-content">
@@ -168,8 +165,6 @@
             </div>
         </div>
         <!-- FORM MODAL---------------------------------- -->
-
-        <!-- <button type="button" class="btn btn-info" data-toggle="modal" data-target="#contact_dialog">Contact</button> -->
      
         <!-- Contact us modal -->
         <div class="modal hide fade" id="contact_dialog" role="dialog">
@@ -271,8 +266,6 @@
                 </div>
             </div>
 
-
-        <!-- MODALS -------------------------- -->
         <script src="{{ url_for('static', filename='js/logic.js') }}"></script>
     </body>
 </html>
