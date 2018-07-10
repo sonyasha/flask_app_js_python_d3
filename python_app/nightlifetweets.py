@@ -6,7 +6,7 @@ from config import consumer_key, consumer_secret, access_token, access_token_sec
 
 conn = "mongodb://localhost:27017"
 client = pymongo.MongoClient(conn)
-db = client.dc_app
+db = client.dc_dashboard
 collection=db.nightlife
 
 
@@ -27,12 +27,13 @@ def getTweets():
     date = []
 
     for target in target_terms:
+        print(f'grabbing {target}')
 
         oldest_tweet = None
 
         for x in range(1):
 
-            public_tweets = api.search(target, count=2, result_type="recent", max_id=oldest_tweet)
+            public_tweets = api.search(target, count=3, result_type="recent", max_id=oldest_tweet)
 
             for tweet in public_tweets["statuses"]:
                 bar.append(target)
@@ -49,8 +50,3 @@ def getTweets():
     nightlifetweets=nightlife_df.to_dict('records')
     
     return nightlifetweets
-
-# nighttweets = getTweets()
-
-# for x in nighttweets:
-#     collection.replace_one(x, x, upsert=True)

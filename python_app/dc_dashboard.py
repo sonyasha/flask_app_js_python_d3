@@ -3,16 +3,16 @@ from flask_pymongo import PyMongo
 from functions import getRidOfId
 
 
-dc_app = Flask(__name__)
-mongo = PyMongo(dc_app)
+dc_dashboard = Flask(__name__)
+mongo = PyMongo(dc_dashboard)
 
-@dc_app.route('/')
+@dc_dashboard.route('/')
 def index():
 
     return render_template("index.html")
 
 
-@dc_app.route("/sports")
+@dc_dashboard.route("/sports")
 def sports():
     # from functions import getRidOfId
 
@@ -25,58 +25,26 @@ def sports():
 
 
 #function to render sports graph in the index.html
-@dc_app.route('/templates/sports.html')
+@dc_dashboard.route('/templates/sports.html')
 def show_sports():
 
     return send_file('templates/sports.html')
 
 
 #function to render dc_maps in the index.html
-@dc_app.route('/templates/dc_map.html')
+@dc_dashboard.route('/templates/dc_map.html')
 def show_map():
 
     return send_file('templates/dc_map.html')
 
 
-@dc_app.route('/templates/ratings.html')
+@dc_dashboard.route('/templates/ratings.html')
 def show_rate():
 
     return send_file('templates/ratings.html')
 
 
-# @dc_app.route('/gunshots')
-# def getShots():
-
-#     allshots = getRidOfId(mongo.db.gunshots.find())
-
-#     return jsonify(allshots)
-
-
-# @dc_app.route('/singleshots')
-# def getSingle():
-
-#     single = getRidOfId(mongo.db.singlegunshot.find())
-
-#     return jsonify(single)
-
-
-# @dc_app.route('/multishots')
-# def getMulti():
-
-#     multi = getRidOfId(mongo.db.multigunshot.find())
-
-#     return jsonify(multi)
-
-
-# @dc_app.route('/arenas')
-# def getArenas():
-
-#     arenas = getRidOfId(mongo.db.arenas.find())
-
-#     return jsonify(arenas)
-
-
-@dc_app.route('/form', methods=["GET","POST"])
+@dc_dashboard.route('/form', methods=["GET","POST"])
 def form():
     import datetime
 
@@ -97,7 +65,7 @@ def form():
     # return render_template('ratings.html')
 
 
-@dc_app.route('/rating')
+@dc_dashboard.route('/rating')
 def rating():
     import pandas as pd
 
@@ -112,9 +80,9 @@ def rating():
     return jsonify(rate.to_dict(orient='records'))
 
 
-@dc_app.route('/grabtweets')
+@dc_dashboard.route('/grabtweets')
 def grabtweets():
-    import time
+    # import time
     from nightlifetweets import getTweets
     
     nighttweets = getTweets()
@@ -122,35 +90,67 @@ def grabtweets():
     for x in nighttweets:
         mongo.db.nightlife.replace_one(x, x, upsert=True)
     print('tweets added')
-    time.sleep(3)
+    # time.sleep(3)
 
     tweets = getRidOfId(mongo.db.nightlife.find())
     return jsonify(tweets)
 
 
-@dc_app.route('/templates/tweets.html')
+@dc_dashboard.route('/templates/tweets.html')
 def show_tweets():
 
     return send_file('templates/tweets.html')
 
 
-@dc_app.route('/templates/entertainment.html')
+@dc_dashboard.route('/templates/entertainment.html')
 def show_ent():
 
     return send_file('templates/entertainment.html')
 
 
-@dc_app.route('/templates/abra.html')
+@dc_dashboard.route('/templates/abra.html')
 def show_liq():
 
     return send_file('templates/abra.html')
 
 
-@dc_app.route('/templates/ShotsMap.html')
+@dc_dashboard.route('/templates/ShotsMap.html')
 def show_shots():
 
     return send_file('templates/ShotsMap.html')
 
 
 if __name__ == "__main__":
-    dc_app.run(debug=True)
+    dc_dashboard.run(debug=True)
+
+
+# @dc_dashboard.route('/gunshots')
+# def getShots():
+
+#     allshots = getRidOfId(mongo.db.gunshots.find())
+
+#     return jsonify(allshots)
+
+
+# @dc_dashboard.route('/singleshots')
+# def getSingle():
+
+#     single = getRidOfId(mongo.db.singlegunshot.find())
+
+#     return jsonify(single)
+
+
+# @dc_dashboard.route('/multishots')
+# def getMulti():
+
+#     multi = getRidOfId(mongo.db.multigunshot.find())
+
+#     return jsonify(multi)
+
+
+# @dc_dashboard.route('/arenas')
+# def getArenas():
+
+#     arenas = getRidOfId(mongo.db.arenas.find())
+
+#     return jsonify(arenas)

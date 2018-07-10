@@ -1,3 +1,32 @@
+/* body, html {
+    padding: 0;
+    margin: 0;
+    margin-top: -15px;
+    background: rgb(201, 207, 212);
+    height: 100%;
+}
+
+.picheader { */
+    /* display: flex; */
+    /* background: url('../styles/images/header.jpg') center no-repeat; */
+    /* background-size: cover;
+}
+
+.iframeContainer { */
+    /* padding: 1px; */
+    /* border: 1px solid #e3e3e3;
+}
+
+.modal-dialog .sport { */
+    /* width: 750px; */
+    /* margin: auto;
+}
+
+.modal-dialog .map { */
+    /* width: 950px; */
+    /* margin: auto;
+} */
+
 
 /* MAIN LAYOUT------------------------------------------------ */
 
@@ -29,13 +58,24 @@ article {
     /* background: rgb(236, 122, 198); */
 }
 
+footer {
+    grid-area: footer;
+    display: flex;
+    justify-content: center;
+}
+
+footer p{
+    font-size: 15px;
+}
+
 .wrapper {
     display: grid;
     grid-template-columns: 0.5fr 3fr;
     grid-template-rows: 250px auto;
     grid-template-areas: 
         "header header"
-        "aside article";
+        "aside article"
+        'aside footer';
 }
 
 /* HEADER LAYOUT------------------------------------------------ */
@@ -81,6 +121,7 @@ header {
 .sports-info {
     grid-area: sports-info;
     align-self: flex-start;
+    margin-left: 20px;
 }
 
 .tweets {
@@ -112,7 +153,8 @@ article {
         grid-template-rows: 280px auto;
         grid-template-areas: 
             "header header"
-            "aside article";
+            "aside article"
+            'aside footer';
     }
 
     header {
@@ -130,7 +172,8 @@ article {
         grid-template-areas: 
             "header"
             "aside"
-            "article";
+            "article"
+            'footer';
     }
 
     header {
@@ -184,7 +227,8 @@ article {
         grid-template-rows: 280px auto;
         grid-template-areas: 
             "header"
-            "article";
+            "article"
+            'footer';
     }
     aside {
         display: none;
@@ -264,4 +308,8 @@ article {
 .iframe-child {
     overflow: scroll;
     -webkit-overflow-scrolling: touch;
+}
+
+.map-info, .map, .sports-info, .sports, .tweets, .shots {
+    padding-bottom: 50px;
 }

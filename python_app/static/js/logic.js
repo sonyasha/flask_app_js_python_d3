@@ -1,4 +1,3 @@
-//'access_token=pk.eyJ1IjoibWFwYm94IiwiYSI6ImNpejY4NDg1bDA1cjYzM280NHJ5NzlvNDMifQ.d6e-nNyBDtmQCVwVNivz7A'
 
 $( document ).ready(function() {
     console.log( "ready!" );
@@ -48,7 +47,7 @@ $(document).ready(function() {
 		$('#rates-modal').modal({show:true});
 		setTimeout(function() { //show rates before submitting
 			$("#contact_form").submit();
-		}, 6000)
+		}, 4000)
 		
 	});
 });
