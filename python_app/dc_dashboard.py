@@ -1,6 +1,7 @@
 from flask import Flask, render_template, jsonify, redirect, send_file, request
 from flask_pymongo import PyMongo
 from python_app.functions import getRidOfId
+from python_app.functions import getTweets
 import os
 
 MONGO_URL = os.environ.get('MONGODB_URI')
@@ -90,7 +91,7 @@ def rating():
 @dc_dashboard.route('/grabtweets')
 def grabtweets():
     # import time
-    from nightlifetweets import getTweets
+    # from python_app.nightlifetweets import getTweets
     
     nighttweets = getTweets()
 
