@@ -1,0 +1,1 @@
+web: gunicorn python_app.dc_dashboard:dc_dashboard
