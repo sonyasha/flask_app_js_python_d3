@@ -129,7 +129,7 @@ def show_shots():
 
 
 if __name__ == "__main__":
-    dc_dashboard.run(debug=True)
+    dc_dashboard.run()
 
 
 # @dc_dashboard.route('/gunshots')
