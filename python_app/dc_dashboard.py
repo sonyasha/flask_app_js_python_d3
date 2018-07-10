@@ -1,9 +1,16 @@
 from flask import Flask, render_template, jsonify, redirect, send_file, request
 from flask_pymongo import PyMongo
-from functions import getRidOfId
+from python_app.functions import getRidOfId
+import os
+
+MONGO_URL = os.environ.get('MONGODB_URI')
+if not MONGO_URL:
+    MONGO_URL = "mongodb://localhost:27017/dc_dashboard"
 
 
 dc_dashboard = Flask(__name__)
+
+dc_dashboard.config["MONGO_URI"] = MONGO_URL
 mongo = PyMongo(dc_dashboard)
 
 @dc_dashboard.route('/')
