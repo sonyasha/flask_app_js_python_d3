@@ -1,11 +1,11 @@
-#WEB application that serves to share information about life in Washington DC.
+# WEB application that serves to share information about life in Washington DC.
 
-**Created with Flask, Python 3.6 and MongoDB.**
+### Created with Flask, Python 3.6 and MongoDB.
 Additional tools: D3.js, Plotly.js, JQuery, Leaflet, Mapbox, Javascript, Tweepy, CSS-grid.
 Deployment: Heroku.
 
 
-##Content:
+## Content:
 
 1. City maps (Leaflet, Mapbox, GeoJSON, Clusters).
 
