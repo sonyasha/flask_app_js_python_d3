@@ -77,15 +77,22 @@ def form():
 def rating():
     import pandas as pd
 
-    all_ratings = getRidOfId(mongo.db.feedbacks.find())
+    all_ratings = getRidOfId(mongo.db.feedbacks.find().sort("_id", 1))
+    converted = [{'Date': pd.to_datetime(x['Date']).normalize(),'Rating':int(x['Rating'])} for x in all_ratings]
+    # print(converted)
 
-    df = pd.DataFrame.from_dict(all_ratings, orient='columns')
-    df['Date'] = pd.to_datetime(df['Date']).dt.strftime('%m/%d/%Y')
-    df['Rating'] = pd.to_numeric(df['Rating'])
+    df = pd.DataFrame.from_dict(converted, orient='columns')
+    # df['Date'] = pd.to_datetime(df['Date']).dt.strftime('%m/%d/%Y')
+    # df['Rating'] = pd.to_numeric(df['Rating'])
     rate = df.groupby('Date').mean().reset_index()
     rate['Rating'] = round(rate['Rating'],2)
+    rate_dict = rate.to_dict(orient='records')
+    for x in rate_dict:
+        x['Date'] = x['Date'].strftime('%m/%d/%Y')
+    
+    print(rate_dict)
 
-    return jsonify(rate.to_dict(orient='records'))
+    return jsonify(rate_dict)
 
 
 @dc_dashboard.route('/grabtweets')
@@ -100,7 +107,8 @@ def grabtweets():
     print('tweets added')
     # time.sleep(3)
 
-    tweets = getRidOfId(mongo.db.nightlife.find())
+    tweets = getRidOfId(mongo.db.nightlife.find().sort("_id", -1).limit(50))
+
     return jsonify(tweets)
 
 

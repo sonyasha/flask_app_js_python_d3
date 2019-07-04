@@ -2,6 +2,7 @@
 
 ### Created with Flask, Python 3.6 and MongoDB.
 Additional tools: D3.js, Plotly.js, JQuery, Leaflet, Mapbox, Javascript, Tweepy, CSS-grid.
+
 Deployment: Heroku.
 
 
